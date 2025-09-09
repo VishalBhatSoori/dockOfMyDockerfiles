@@ -1,0 +1,51 @@
+
+
+services:
+  mysql:
+    container_name: "my_sql"
+    image: mysql:latest
+    networks:
+      - myNetwork
+    volumes:
+      - myContainerData:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devops
+    ports:
+      - 3306:3306
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  my_backend:
+    container_name: myFlaskApp
+    build:
+      context: .
+    networks:
+      - myNetwork
+    ports:
+      - 5000:5000
+    environment:
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: my_sql
+      MYSQL_DB: devops
+      MYSQL_USER: root
+    depends_on:
+      - mysql
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  myContainerData:
+
+networks:
+  myNetwork:

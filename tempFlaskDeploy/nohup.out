@@ -1,0 +1,10 @@
+unknown shorthand flag: 'd' in -d
+
+Usage:  docker attach [OPTIONS] CONTAINER
+
+Run 'docker attach --help' for more information
+172.17.0.1 - - [18/Jun/2025 09:03:37] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [18/Jun/2025 09:03:41] "[33mGET /error HTTP/1.1[0m" 404 -
+172.17.0.1 - - [18/Jun/2025 09:03:55] "[33mGET /error/is HTTP/1.1[0m" 404 -
+172.17.0.1 - - [18/Jun/2025 09:04:06] "[33mGET /message HTTP/1.1[0m" 404 -
+172.17.0.1 - - [18/Jun/2025 13:03:37] "GET / HTTP/1.1" 200 -

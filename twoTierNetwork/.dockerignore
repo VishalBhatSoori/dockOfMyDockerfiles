@@ -1,0 +1,25 @@
+# Ignore database files
+mysql-data/
+mysql_data/
+
+# Python stuff
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+
+# Node.js (if used)
+node_modules/
+
+# Virtual environments
+.venv/
+env/
+
+# Git & logs
+.git/
+*.log
+.DS_Store
+
